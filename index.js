@@ -41,8 +41,26 @@ class Airplane {
 */
 
 class Person {
-
+  constructor(name, age){
+    this.name = name;
+    this.age = age;
+    this.stomach = [];
+  }
+  eat(someFood){
+    if(this.stomach.length < 10){
+      this.stomach.push(someFood);
+    }
+  }
+  poop(){
+    this.stomach = [];
+  }
+  toString(){
+    return `${this.name}, ${this.age}`;
+  }
 }
+
+// const me = new Person("Somayah", 25);
+// console.log(me.toString());
 
 /*
   TASK 2
@@ -58,9 +76,32 @@ class Person {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-class Car {
-
+class Car{
+  constructor(model, milesPerGallon){
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+  fill(gallons){
+    this.tank += gallons;
+  }
+  drive(distance){
+    if (distance <= this.tank * this.milesPerGallon) {
+      this.odometer += distance;
+      this.tank -= distance / this.milesPerGallon;
+    } 
+    else if (distance > this.tank * this.milesPerGallon) {
+      this.odometer += this.tank * this.milesPerGallon;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }
+  }
 }
+
+// const myCar = new Car( "Ford", 30);
+// myCar.fill(10);
+// console.log(myCar.drive(500));
 
 /*
   TASK 3
@@ -74,9 +115,26 @@ class Car {
         + Speaking should return a phrase `Hello my name is {name}, I am from {location}`.
         + {name} and {location} of course come from the instance's own properties.
 */
-class Lambdasian {
 
+class Lambdasian {
+  constructor(attributes){
+    this.name = attributes.name;
+    this.age = attributes.age;
+    this.location = attributes.location;
+  }
+  speak(){
+    return `Hello my name is ${this.name}, I am from ${this.location}`;
+  }
 }
+
+// const meAgain = new Lambdasian({
+//   name: "Somayah",
+//   age : 25, 
+//   location: "NYC",
+// });
+
+// console.log(meAgain);
+// console.log(meAgain.speak());
 
 /*
   TASK 4
@@ -92,9 +150,37 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
 
+class Instructor extends Lambdasian{
+  constructor(attributes){
+    super(attributes);
+    this.specialty = attributes.specialty;
+    this.favLanguage = attributes.favLanguage;
+    this.catchPhrase = attributes.catchPhrase;
+  }
+  demo(subject){
+    return `Today we are learning about ${subject}`;
+  }
+  grade(student, subject){
+    return `${student.name} receives a perfect score on ${subject}`;
+  }
+  assignGrade(student){
+    student.grade += Math.floor(Math.random()*201) - 100; 
+  }
 }
+
+// const tl = new Instructor({
+//   name: "team lead",
+//   age: 32,
+//   location: "USA",
+//   specialty: "redux",
+//   favLanguage: "Javascript",
+//   catchPhrase: "Don't forget the homies",
+// })
+
+// console.log(tl);
+// console.log(tl.demo("arrays"));
+// console.log(tl.grade(meAgain, "prototypes"));
 
 /*
   TASK 5
@@ -111,9 +197,48 @@ class Instructor {
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
 
+class Student extends Lambdasian{
+  constructor(attributes){
+    super(attributes);
+    this.previousBackground = attributes.previousBackground;
+    this.className = attributes.className;
+    this.favSubjects = attributes.favSubjects;
+    this.grade = Math.ceil(Math.random() * 100);
+  }
+  listSubjects(){
+    const allFavs = this.favSubjects.join(", ");
+    return `Loving ${allFavs}!`;
+  }
+  PRAssignment(subject){
+    return `${this.name} has submitted a PR for ${subject}`;
+  }
+  sprintChallenge(subject){
+    return `${this.name} has begun sprint challenge on ${subject}`;
+  }
+  graduate(){
+    if (this.grade > 70){
+      return "Congrats, you're ready to graduate from Lambda School!"
+    }
+  }
 }
+
+// const alsoMe = new Student({
+//   name: "Somayah",
+//   age: 25,
+//   location: "USA",
+//   specialty: "web design",
+//   favLanguage: "Javascript",
+//   catchPhrase: "Patience is a virtue",
+//   previousBackground: "teaching",
+//   className: "WEB34",
+//   favSubjects: ["JS","HTML","CSS"],
+// });
+
+// console.log(alsoMe);
+// console.log(alsoMe.listSubjects());
+// console.log(alsoMe.PRAssignment("Classes"));
+// console.log(alsoMe.sprintChallenge("JavaScript Fundamentals"));
 
 /*
   TASK 6
@@ -128,18 +253,48 @@ class Student {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-
+class ProjectManager extends Instructor{
+  constructor(attributes){
+    super(attributes);
+    this.gradClassName = attributes.gradClassName;
+    this.favInstructor = attributes.favInstructor;
+  }
+  standUp(channel){
+    return `${this.name} announces to ${channel}, @channel standy times!`
+  }
+  debugsCode(student, subject){
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
+  }
 }
+
+// const pm = new ProjectManager({
+//   name: "PM",
+//   age: 35,
+//   location: "USA",
+//   specialty: "everything",
+//   favLanguage: "Javascript",
+//   catchPhrase: "Patience is a virtue",
+//   previousBackground: "teaching",
+//   className: "WEB34",
+//   favSubjects: ["JS","HTML","CSS"],
+//   gradClassName : "WEB17",
+//   favInstuctor : "Britt",
+// })
+
+// console.log(pm);
+// console.log(pm.standUp("web34"));
+// console.log(pm.debugsCode(alsoMe, "array methods"));
 
 /*
   STRETCH PROBLEM (no tests!)
     - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
-    - Now that our students have a grade build out a method on the Instructor (this will be used by _BOTH_ instructors and PM's) that will randomly add or subtract points to a student's grade. _Math.random_ will help.
+    - Now that our students have a grade build out a method on the Instructor (this will be used by _BOTH_ instructors
+      nd PM's) that will randomly add or subtract points to a student's grade. _Math.random_ will help.
     - Add a graduate method to a student.
       + This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
       + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
 */
+
 
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
