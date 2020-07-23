@@ -258,6 +258,24 @@ class ProjectManager extends Instructor{
   }
 }
 
+const pm = new ProjectManager({
+  name: "PM",
+  age: 35,
+  location: "USA",
+  specialty: "everything",
+  favLanguage: "Javascript",
+  catchPhrase: "Patience is a virtue",
+  previousBackground: "teaching",
+  className: "WEB34",
+  favSubjects: ["JS","HTML","CSS"],
+  gradClassName : "WEB17",
+  favInstuctor : "Britt",
+})
+
+console.log(pm);
+console.log(pm.standUp("web34"));
+console.log(pm.debugsCode(alsoMe, "array methods"));
+
 /*
   STRETCH PROBLEM (no tests!)
     - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
