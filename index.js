@@ -59,8 +59,8 @@ class Person {
   }
 }
 
-const me = new Person("Somayah", 25);
-console.log(me.toString());
+// const me = new Person("Somayah", 25);
+// console.log(me.toString());
 
 /*
   TASK 2
@@ -99,9 +99,9 @@ class Car{
   }
 }
 
-const myCar = new Car( "Ford", 30);
-myCar.fill(10);
-console.log(myCar.drive(500));
+// const myCar = new Car( "Ford", 30);
+// myCar.fill(10);
+// console.log(myCar.drive(500));
 
 /*
   TASK 3
@@ -127,14 +127,14 @@ class Lambdasian {
   }
 }
 
-const meAgain = new Lambdasian({
-  name: "Somayah",
-  age : 25, 
-  location: "NYC",
-});
+// const meAgain = new Lambdasian({
+//   name: "Somayah",
+//   age : 25, 
+//   location: "NYC",
+// });
 
-console.log(meAgain);
-console.log(meAgain.speak());
+// console.log(meAgain);
+// console.log(meAgain.speak());
 
 /*
   TASK 4
@@ -166,18 +166,18 @@ class Instructor extends Lambdasian{
   }
 }
 
-const tl = new Instructor({
-  name: "team lead",
-  age: 32,
-  location: "USA",
-  specialty: "redux",
-  favLanguage: "Javascript",
-  catchPhrase: "Don't forget the homies",
-})
+// const tl = new Instructor({
+//   name: "team lead",
+//   age: 32,
+//   location: "USA",
+//   specialty: "redux",
+//   favLanguage: "Javascript",
+//   catchPhrase: "Don't forget the homies",
+// })
 
-console.log(tl);
-console.log(tl.demo("arrays"));
-console.log(tl.grade(meAgain, "prototypes"));
+// console.log(tl);
+// console.log(tl.demo("arrays"));
+// console.log(tl.grade(meAgain, "prototypes"));
 
 /*
   TASK 5
@@ -214,22 +214,22 @@ class Student extends Lambdasian{
   }
 }
 
-const alsoMe = new Student({
-  name: "Somayah",
-  age: 25,
-  location: "USA",
-  specialty: "web design",
-  favLanguage: "Javascript",
-  catchPhrase: "Patience is a virtue",
-  previousBackground: "teaching",
-  className: "WEB34",
-  favSubjects: ["JS","HTML","CSS"],
-});
+// const alsoMe = new Student({
+//   name: "Somayah",
+//   age: 25,
+//   location: "USA",
+//   specialty: "web design",
+//   favLanguage: "Javascript",
+//   catchPhrase: "Patience is a virtue",
+//   previousBackground: "teaching",
+//   className: "WEB34",
+//   favSubjects: ["JS","HTML","CSS"],
+// });
 
-console.log(alsoMe);
-console.log(alsoMe.listSubjects());
-console.log(alsoMe.PRAssignment("Classes"));
-console.log(alsoMe.sprintChallenge("JavaScript Fundamentals"));
+// console.log(alsoMe);
+// console.log(alsoMe.listSubjects());
+// console.log(alsoMe.PRAssignment("Classes"));
+// console.log(alsoMe.sprintChallenge("JavaScript Fundamentals"));
 
 /*
   TASK 6
@@ -248,7 +248,7 @@ class ProjectManager extends Instructor{
   constructor(attributes){
     super(attributes);
     this.gradClassName = attributes.gradClassName;
-    this.favInstuctor = attributes.favInstructor;
+    this.favInstructor = attributes.favInstructor;
   }
   standUp(channel){
     return `${this.name} announces to ${channel}, @channel standy times!`
@@ -258,23 +258,23 @@ class ProjectManager extends Instructor{
   }
 }
 
-const pm = new ProjectManager({
-  name: "PM",
-  age: 35,
-  location: "USA",
-  specialty: "everything",
-  favLanguage: "Javascript",
-  catchPhrase: "Patience is a virtue",
-  previousBackground: "teaching",
-  className: "WEB34",
-  favSubjects: ["JS","HTML","CSS"],
-  gradClassName : "WEB17",
-  favInstuctor : "Britt",
-})
+// const pm = new ProjectManager({
+//   name: "PM",
+//   age: 35,
+//   location: "USA",
+//   specialty: "everything",
+//   favLanguage: "Javascript",
+//   catchPhrase: "Patience is a virtue",
+//   previousBackground: "teaching",
+//   className: "WEB34",
+//   favSubjects: ["JS","HTML","CSS"],
+//   gradClassName : "WEB17",
+//   favInstuctor : "Britt",
+// })
 
-console.log(pm);
-console.log(pm.standUp("web34"));
-console.log(pm.debugsCode(alsoMe, "array methods"));
+// console.log(pm);
+// console.log(pm.standUp("web34"));
+// console.log(pm.debugsCode(alsoMe, "array methods"));
 
 /*
   STRETCH PROBLEM (no tests!)
